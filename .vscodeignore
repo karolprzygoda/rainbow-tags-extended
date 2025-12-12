@@ -21,7 +21,7 @@ node_modules/.bin/**
 **/.prettierignore
 **/.editorconfig
 
-./examples/**
+examples/**
 
 .gitignore
 eslint.config.mts

@@ -42,18 +42,15 @@ Reload VS Code after installation.
 
 HTML
 
-
-![Example 1](examples/example1.png)
+![Example 1](https://github.com/karolprzygoda/rainbow-tags-extended/blob/main/examples/example1.png?raw=true)
 
 JSX
 
-
-![Example 2](examples/example2.png)
+![Example 2](https://github.com/karolprzygoda/rainbow-tags-extended/blob/main/examples/example2.png?raw=true)
 
 TSX
 
-
-![Example 3](examples/example3.png)
+![Example 3](https://github.com/karolprzygoda/rainbow-tags-extended/blob/main/examples/example3.png?raw=true)
 
 ## Settings examples (`settings.json`)
 
