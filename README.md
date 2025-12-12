@@ -41,12 +41,18 @@ Reload VS Code after installation.
 ## Examples
 
 HTML
+
+
 ![Example 1](examples/example1.png)
 
 JSX
+
+
 ![Example 2](examples/example2.png)
 
 TSX
+
+
 ![Example 3](examples/example3.png)
 
 ## Settings examples (`settings.json`)
