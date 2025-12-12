@@ -9,6 +9,10 @@
   "engines": {
     "vscode": "^1.80.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karolprzygoda/rainbow-tags-extended"
+  },
   "categories": [
     "Programming Languages",
     "Linters",
