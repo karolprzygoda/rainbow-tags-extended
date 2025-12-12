@@ -1,0 +1,72 @@
+{
+  "name": "rainbow-tags-extended",
+  "displayName": "Rainbow Tags Extended",
+  "description": "Rainbow colors for matching HTML / JSX / TSX tags (brackets + tag names) with WebStorm-like styling.",
+  "version": "0.1.0",
+  "publisher": "karolprzygoda",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Themes",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Rainbow Tags Extended",
+      "properties": {
+        "rainbowTagsExtended.colors": {
+          "type": "array",
+          "default": [
+            "#ff5555",
+            "#ffb86c",
+            "#f1fa8c",
+            "#50fa7b",
+            "#8be9fd",
+            "#bd93f9",
+            "#ff79c6"
+          ],
+          "description": "Array of hex colors cycled by nesting depth (WebStorm-like rainbow)."
+        },
+        "rainbowTagsExtended.ignoredTags": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Tag names to ignore when applying rainbow colors (case-insensitive)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "pnpm run lint -- --fix",
+    "format": "prettier . -w",
+    "format:check": "prettier . -c"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.49.0"
+  }
+}
