@@ -30,18 +30,18 @@ export function activate(context: vscode.ExtensionContext) {
         event.affectsConfiguration('rainbowTagsExtended.ignoredTags')
       ) {
         loadConfiguration();
-        triggerUpdate();
+        triggerImmediateUpdate();
       }
     }),
-    vscode.window.onDidChangeActiveTextEditor(triggerUpdate),
+    vscode.window.onDidChangeActiveTextEditor(triggerImmediateUpdate),
     vscode.workspace.onDidChangeTextDocument((e) => {
       if (vscode.window.activeTextEditor?.document === e.document) {
-        triggerUpdate();
+        triggerDebouncedUpdate();
       }
     }),
   );
 
-  triggerUpdate();
+  triggerImmediateUpdate();
 }
 
 export function deactivate() {
@@ -78,17 +78,30 @@ function disposeDecorations() {
   colorDecorationTypes = [];
 }
 
-function triggerUpdate() {
+function triggerDebouncedUpdate() {
   if (pendingUpdate) {
     clearTimeout(pendingUpdate);
   }
   pendingUpdate = setTimeout(() => {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor || !SUPPORTED_LANGS.has(editor.document.languageId)) {
-      return;
-    }
-    applyDecorations(editor);
+    pendingUpdate = undefined;
+    performUpdate();
   }, 10);
+}
+
+function triggerImmediateUpdate() {
+  if (pendingUpdate) {
+    clearTimeout(pendingUpdate);
+    pendingUpdate = undefined;
+  }
+  performUpdate();
+}
+
+function performUpdate() {
+  const editor = vscode.window.activeTextEditor;
+  if (!editor || !SUPPORTED_LANGS.has(editor.document.languageId)) {
+    return;
+  }
+  applyDecorations(editor);
 }
 
 function applyDecorations(editor: vscode.TextEditor) {
